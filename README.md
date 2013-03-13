@@ -77,4 +77,18 @@ hotdog.write("in a bun"); // (D (O (G in a bun)))
 
 Buns are convenient, edible, and keep your hands clean! Use **bun**!
 
+
+API
+---
+
+**bun**
+
+```js
+var service = bun(streams);
+```
+
+* _streams_ - An array of `stream` objects.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 [build_status]: https://travis-ci.org/naomik/bun.png
