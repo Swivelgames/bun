@@ -15,6 +15,9 @@
     "streams2",
     "bun"
   ],
+  "engines": {
+    "node": "~0.10.0"
+  },
   "author": "naomik <naomi@fknsrs.biz>",
   "license": "BSD",
   "readmeFilename": "README.md",
