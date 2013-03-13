@@ -1,0 +1,24 @@
+{
+  "name": "bun",
+  "version": "0.0.0",
+  "description": "A useful container for streams",
+  "main": "lib/bun.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/naomik/bun.git"
+  },
+  "keywords": [
+    "stream",
+    "streams2",
+    "bun"
+  ],
+  "author": "naomik <naomi@fknsrs.biz>",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "mocha": "~1.8.2"
+  }
+}
