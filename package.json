@@ -16,7 +16,7 @@
     "bun"
   ],
   "engines": {
-    "node": "~0.10.0"
+    "node": "~0.9.12 || ~0.10.0"
   },
   "author": "naomik <naomi@fknsrs.biz>",
   "license": "BSD",
