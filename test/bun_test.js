@@ -213,12 +213,6 @@ describe("bun", function() {
       done();
     });
 
-    output.on("readable", function() {
-      var e;
-      while (e = output.read()) {
-      }
-    });
-
     input.pipe(stack).pipe(output);
     input.write("hello");
     input.end();
@@ -235,12 +229,6 @@ describe("bun", function() {
 
     stack.on("finish", function() {
       done();
-    });
-
-    output.on("readable", function() {
-      var e;
-      while (e = output.read()) {
-      }
     });
 
     input.pipe(stack).pipe(output);
