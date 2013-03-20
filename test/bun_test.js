@@ -246,15 +246,10 @@ describe("bun", function() {
 
     var stack = bun([alice, bob]);
 
-    output.on("finish", function() {
+    stack.on("finish", function() {
       done();
     });
 
-    output.on("readable", function() {
-      var e;
-      while (e = output.read()) {
-      }
-    });
 
     input.pipe(stack).pipe(output);
     input.write("hello");
