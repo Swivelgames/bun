@@ -250,8 +250,111 @@ describe("bun", function() {
       done();
     });
 
+    input.pipe(stack).pipe(output);
+    input.write("hello");
+    input.end();
+  });
+
+  it("should end correctly when piped through with no streams and no data written", function(done) {
+    var input = new stream.PassThrough();
+    var output = new stream.Writable();
+    output._write = function _write(input, encoding, done) { return done(); };
+
+    var stack = bun([]);
+
+    stack.on("end", function() {
+      done();
+    });
 
     input.pipe(stack).pipe(output);
+    input.end();
+  });
+
+  it("should end correctly when piped through with one stream and no data written", function(done) {
+    var input = new stream.PassThrough();
+    var output = new stream.PassThrough();
+
+    var alice = new stream.PassThrough({objectMode: true});
+
+    var stack = bun([alice]);
+
+    stack.on("end", function() {
+      done();
+    });
+
+    input.pipe(stack).pipe(output);
+    input.end();
+  });
+
+  it("should end correctly when piped through with two streams and no data written", function(done) {
+    var input = new stream.PassThrough();
+    var output = new stream.PassThrough();
+
+    var alice = new stream.PassThrough({objectMode: true}),
+        bob   = new stream.PassThrough({objectMode: true});
+
+    var stack = bun([alice, bob]);
+
+    stack.on("end", function() {
+      done();
+    });
+
+    input.pipe(stack).pipe(output);
+    input.end();
+  });
+
+  it("should end correctly when piped through with no streams and some data written", function(done) {
+    var input = new stream.PassThrough();
+    var output = new stream.PassThrough();
+    var nowhere = new stream.Writable();
+    nowhere._write = function _write(input, encoding, done) { return done(); };
+
+    var stack = bun([]);
+
+    stack.on("end", function() {
+      done();
+    });
+
+    input.pipe(stack).pipe(output).pipe(nowhere);
+    input.write("hello");
+    input.end();
+  });
+
+  it("should end correctly when piped through with one stream and some data written", function(done) {
+    var input = new stream.PassThrough();
+    var output = new stream.PassThrough();
+    var nowhere = new stream.Writable();
+    nowhere._write = function _write(input, encoding, done) { return done(); };
+
+    var alice = new stream.PassThrough({objectMode: true});
+
+    var stack = bun([alice]);
+
+    stack.on("end", function() {
+      done();
+    });
+
+    input.pipe(stack).pipe(output).pipe(nowhere);
+    input.write("hello");
+    input.end();
+  });
+
+  it("should end correctly when piped through with two streams and some data written", function(done) {
+    var input = new stream.PassThrough();
+    var output = new stream.PassThrough();
+    var nowhere = new stream.Writable();
+    nowhere._write = function _write(input, encoding, done) { return done(); };
+
+    var alice = new stream.PassThrough({objectMode: true}),
+        bob   = new stream.PassThrough({objectMode: true});
+
+    var stack = bun([alice, bob]);
+
+    stack.on("end", function() {
+      done();
+    });
+
+    input.pipe(stack).pipe(output).pipe(nowhere);
     input.write("hello");
     input.end();
   });
