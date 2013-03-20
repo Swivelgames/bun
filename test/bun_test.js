@@ -159,7 +159,7 @@ describe("bun", function() {
 
     var stack = bun([]);
 
-    output.on("finish", function() {
+    stack.on("finish", function() {
       done();
     });
 
@@ -176,7 +176,7 @@ describe("bun", function() {
 
     var stack = bun([alice]);
 
-    output.on("finish", function() {
+    stack.on("finish", function() {
       done();
     });
 
@@ -194,7 +194,7 @@ describe("bun", function() {
 
     var stack = bun([alice, bob]);
 
-    output.on("finish", function() {
+    stack.on("finish", function() {
       done();
     });
 
@@ -209,7 +209,7 @@ describe("bun", function() {
 
     var stack = bun([]);
 
-    output.on("finish", function() {
+    stack.on("finish", function() {
       done();
     });
 
@@ -233,7 +233,7 @@ describe("bun", function() {
 
     var stack = bun([alice]);
 
-    output.on("finish", function() {
+    stack.on("finish", function() {
       done();
     });
 
