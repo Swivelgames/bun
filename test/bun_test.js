@@ -153,8 +153,8 @@ describe("bun", function() {
   });
 
   it("should finish correctly when piped through with no streams and no data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.Writable({objectMode: true});
     output._write = function _write(input, encoding, done) { return done(); };
 
     var stack = bun([]);
@@ -168,8 +168,8 @@ describe("bun", function() {
   });
 
   it("should finish correctly when piped through with one stream and no data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.Writable({objectMode: true});
     output._write = function _write(input, encoding, done) { return done(); };
 
     var alice = new stream.PassThrough({objectMode: true});
@@ -185,8 +185,8 @@ describe("bun", function() {
   });
 
   it("should finish correctly when piped through with two streams and no data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.Writable({objectMode: true});
     output._write = function _write(input, encoding, done) { return done(); };
 
     var alice = new stream.PassThrough({objectMode: true}),
@@ -203,8 +203,8 @@ describe("bun", function() {
   });
 
   it("should finish correctly when piped through with no streams and some data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.Writable({objectMode: true});
     output._write = function _write(input, encoding, done) { return done(); };
 
     var stack = bun([]);
@@ -219,8 +219,8 @@ describe("bun", function() {
   });
 
   it("should finish correctly when piped through with one stream and some data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.Writable({objectMode: true});
     output._write = function _write(input, encoding, done) { return done(); };
 
     var alice = new stream.PassThrough({objectMode: true});
@@ -237,8 +237,8 @@ describe("bun", function() {
   });
 
   it("should finish correctly when piped through with two streams and some data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.Writable({objectMode: true});
     output._write = function _write(input, encoding, done) { return done(); };
 
     var alice = new stream.PassThrough({objectMode: true}),
@@ -256,8 +256,8 @@ describe("bun", function() {
   });
 
   it("should end correctly when piped through with no streams and no data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.Writable({objectMode: true});
     output._write = function _write(input, encoding, done) { return done(); };
 
     var stack = bun([]);
@@ -271,8 +271,8 @@ describe("bun", function() {
   });
 
   it("should end correctly when piped through with one stream and no data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.PassThrough();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.PassThrough({objectMode: true});
 
     var alice = new stream.PassThrough({objectMode: true});
 
@@ -287,8 +287,8 @@ describe("bun", function() {
   });
 
   it("should end correctly when piped through with two streams and no data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.PassThrough();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.PassThrough({objectMode: true});
 
     var alice = new stream.PassThrough({objectMode: true}),
         bob   = new stream.PassThrough({objectMode: true});
@@ -304,9 +304,9 @@ describe("bun", function() {
   });
 
   it("should end correctly when piped through with no streams and some data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.PassThrough();
-    var nowhere = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.PassThrough({objectMode: true});
+    var nowhere = new stream.Writable({objectMode: true});
     nowhere._write = function _write(input, encoding, done) { return done(); };
 
     var stack = bun([]);
@@ -321,9 +321,9 @@ describe("bun", function() {
   });
 
   it("should end correctly when piped through with one stream and some data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.PassThrough();
-    var nowhere = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.PassThrough({objectMode: true});
+    var nowhere = new stream.Writable({objectMode: true});
     nowhere._write = function _write(input, encoding, done) { return done(); };
 
     var alice = new stream.PassThrough({objectMode: true});
@@ -340,9 +340,9 @@ describe("bun", function() {
   });
 
   it("should end correctly when piped through with two streams and some data written", function(done) {
-    var input = new stream.PassThrough();
-    var output = new stream.PassThrough();
-    var nowhere = new stream.Writable();
+    var input = new stream.PassThrough({objectMode: true});
+    var output = new stream.PassThrough({objectMode: true});
+    var nowhere = new stream.Writable({objectMode: true});
     nowhere._write = function _write(input, encoding, done) { return done(); };
 
     var alice = new stream.PassThrough({objectMode: true}),
