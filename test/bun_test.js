@@ -358,4 +358,16 @@ describe("bun", function() {
     input.write("hello");
     input.end();
   });
+
+  it("should end wrapped streams correctly when ended", function(done) {
+    var alice = new stream.PassThrough({objectMode: true});
+
+    alice.on("finish", function() {
+      done();
+    });
+
+    var stack = bun([alice]);
+
+    stack.end();
+  });
 });
