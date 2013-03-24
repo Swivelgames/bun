@@ -369,4 +369,35 @@ describe("bun", function() {
 
     stack.end();
   });
+
+  it("should finish when wrapped streams finish", function(done) {
+    var alice = new stream.PassThrough({objectMode: true}),
+        outside = new stream.PassThrough({objectMode: true});
+
+    var stack = bun([alice]);
+
+    stack.on("finish", function() {
+      done();
+    });
+
+    outside.pipe(stack).pipe(outside);
+
+    alice.end();
+  });
+
+  it("should end when wrapped streams end", function(done) {
+    var alice = new stream.PassThrough({objectMode: true});
+    var nowhere = new stream.Writable({objectMode: true});
+    nowhere._write = function _write(input, encoding, done) { return done(); };
+
+    var stack = bun([alice]);
+
+    stack.on("end", function() {
+      done();
+    });
+
+    stack.pipe(nowhere);
+
+    alice.push(null);
+  });
 });
