@@ -16,12 +16,12 @@
     "bun"
   ],
   "engines": {
-    "node": "~0.9.12 || ~0.10.0"
+    "node": "~0.10.12"
   },
   "author": "naomik <naomi@fknsrs.biz>",
   "license": "BSD",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "mocha": "~1.8.1"
+    "mocha": "~1.11.0"
   }
 }
