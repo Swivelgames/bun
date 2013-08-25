@@ -33,7 +33,7 @@ at a **better solution**
 
 ```js
 // defined in my-transport.js
-module.service = bun(encryptor, compressor, socket, decompressor, decryptor);
+module.service = bun([encryptor, compressor, socket, decompressor, decryptor]);
 
 // used in client
 var transport = require("./my-transport");
