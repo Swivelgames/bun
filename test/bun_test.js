@@ -400,4 +400,48 @@ describe("bun", function() {
 
     alice.push(null);
   });
+
+  it("should forward errors if bubbleErrors is not specified", function(done) {
+    var alice = new stream.PassThrough();
+
+    var stack = bun([alice]);
+
+    stack.on("error", function(err) {
+      return done();
+    });
+
+    alice.emit("error", Error("test error"));
+  });
+
+  it("should forward errors if bubbleErrors is true", function(done) {
+    var alice = new stream.PassThrough();
+
+    var stack = bun([alice], {bubbleErrors: true});
+
+    stack.on("error", function(err) {
+      return done();
+    });
+
+    alice.emit("error", Error("test error"));
+  });
+
+  it("should not forward errors if bubbleErrors is false", function(done) {
+    var alice = new stream.PassThrough();
+
+    var stack = bun([alice], {bubbleErrors: false});
+
+    var timeout = setTimeout(done, 10);
+
+    stack.on("error", function(err) {
+      clearTimeout(timeout);
+
+      return done(Error("shouldn't have bubbled the error"));
+    });
+
+    alice.on("error", function(err) {
+      // prevent uncaught error crash
+    });
+
+    alice.emit("error", Error("test error"));
+  });
 });

@@ -84,10 +84,17 @@ API
 **bun**
 
 ```js
-var service = bun(streams);
+var service = bun(streams, [options]);
 ```
 
 * _streams_ - An array of `stream` objects.
+* _options_ - An object specifying options. (options are optional)
+
+Options:
+
+* _bubbleErrors_ - Bubble "error" events from wrapped streams up to the outer
+  stream, giving you an easy way to aggregate and react to all the errors
+  emitted by them in one place. Default is `true`.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
