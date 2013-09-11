@@ -4,7 +4,7 @@
   "description": "A useful container for streams",
   "main": "lib/bun.js",
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha -R tap"
   },
   "repository": {
     "type": "git",
