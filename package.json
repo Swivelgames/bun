@@ -1,6 +1,6 @@
 {
   "name": "bun",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A useful container for streams",
   "main": "lib/bun.js",
   "scripts": {
